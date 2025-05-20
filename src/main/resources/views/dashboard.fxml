@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane fx:id="dashboardRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.DashboardController">
+    <top>
+        <HBox spacing="15" alignment="CENTER" styleClass="card" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="10" left="20" right="20"/>
+            </padding>
+            <Button fx:id="addTransactionButton" text="➕ Add" />
+            <Button fx:id="deleteTransactionButton" text="🗑 Delete" />
+            <Button fx:id="exportButton" text="📤 Export CSV" />
+            <Button fx:id="heatmapButton" text="📅 Heatmap" />
+            <Button fx:id="chartsButton" text="📊 Charts" />
+            <Button fx:id="tipsButton" text="💡 Tips" />
+            <Button fx:id="gamifyButton" text="🏆 Gamify" />
+            <ToggleButton fx:id="themeToggle" text="🌙" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="25" alignment="TOP_CENTER" style="-fx-padding: 25;">
+            <HBox spacing="20" alignment="CENTER">
+                <VBox styleClass="card" prefWidth="200" prefHeight="100">
+                    <Label text="💸 Total Spent" style="-fx-font-size: 16px; -fx-text-fill: lightgray;" />
+                    <Label fx:id="totalSpentLabel" text="₹0.00" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox styleClass="card" prefWidth="200" prefHeight="100">
+                    <Label text="💰 Total Income" style="-fx-font-size: 16px; -fx-text-fill: lightgray;" />
+                    <Label fx:id="totalIncomeLabel" text="₹0.00" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                </VBox>
+                <VBox styleClass="card" prefWidth="200" prefHeight="100">
+                    <Label text="📊 Savings" style="-fx-font-size: 16px; -fx-text-fill: lightgray;" />
+                    <Label fx:id="savingsLabel" text="₹0.00" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                </VBox>
+            </HBox>
+
+            <VBox styleClass="card" prefWidth="900" prefHeight="400">
+                <TableView fx:id="transactionTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                        <TableColumn fx:id="categoryColumn" text="Category" prefWidth="220"/>
+                        <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="300"/>
+                        <TableColumn fx:id="amountColumn" text="Amount" prefWidth="168"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

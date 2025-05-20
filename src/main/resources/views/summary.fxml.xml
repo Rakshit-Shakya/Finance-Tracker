@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.SummaryController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 30;">
+
+    <Label text="📊 Monthly Category-wise Spending" styleClass="dashboard-title"/>
+
+    <VBox spacing="10" styleClass="card">
+        <PieChart fx:id="pieChart" prefHeight="350" prefWidth="420"
+                  style="-fx-pie-label-visible: true;" />
+    </VBox>
+</VBox>

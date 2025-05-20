@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.TransactionFormController"
+      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    <Label text="New Transaction" style="-fx-font-size: 18px;" />
+    <TextField fx:id="txtDate" promptText="YYYY-MM-DD" />
+    <TextField fx:id="txtDescription" promptText="Description" />
+    <TextField fx:id="txtAmount" promptText="Amount" />
+    <TextField fx:id="txtCategory" promptText="Category (optional)" />
+    <Button text="Save" onAction="#saveTransaction" />
+</VBox>
