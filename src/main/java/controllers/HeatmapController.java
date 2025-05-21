@@ -38,11 +38,11 @@ public class HeatmapController {
             rect.setArcWidth(12);
             rect.setArcHeight(12);
             rect.setFill(getColor(amount));
-            rect.setStroke(Color.web("#333333"));
+            rect.setStroke(Color.LIGHTGRAY);
             rect.setStrokeWidth(1);
 
             Label dayLabel = new Label(String.valueOf(day.getDayOfMonth()));
-            dayLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-size: 13px;");
+            dayLabel.setStyle("-fx-text-fill: #333333; -fx-font-size: 13px;");
 
             VBox box = new VBox(dayLabel, rect);
             box.setSpacing(5);
@@ -52,10 +52,10 @@ public class HeatmapController {
     }
 
     private Color getColor(double amount) {
-        if (amount == 0) return Color.web("#3a3a3a");
-        if (amount < 100) return Color.web("#4CAF50");     // Green
-        if (amount < 300) return Color.web("#FFC107");     // Amber
-        if (amount < 700) return Color.web("#FF9800");     // Orange
-        return Color.web("#F44336");                       // Red
+        if (amount == 0) return Color.web("#ffffff");      
+        if (amount < 100) return Color.web("#4CAF50");
+        if (amount < 300) return Color.web("#FFC107");
+        if (amount < 700) return Color.web("#FF9800");
+        return Color.web("#F44336");
     }
 }

@@ -41,49 +41,37 @@ public class DashboardController {
     private double monthlyIncome = 0;
     private double monthlyBudget = 0;
     private double totalSpent = 0;
+    public static double globalMonthlyBudget = 0;
 
     @FXML
     public void initialize() {
-        // Animate Table
         FadeTransition fade = new FadeTransition(Duration.millis(800), transactionTable);
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.play();
 
-        // Table Bindings
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
         amountColumn.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
-        // Load data
         loadData();
-
-        // Prompt for budget info
         promptUserBudgetInfo();
 
-        // Button Actions
         if (addTransactionButton != null)
             addTransactionButton.setOnAction(e -> openWindow("/views/transaction_form.fxml", "Add Transaction"));
-
         if (deleteTransactionButton != null)
             deleteTransactionButton.setOnAction(e -> deleteSelected());
-
         if (exportButton != null)
             exportButton.setOnAction(e -> exportDataToCSV());
-
         if (heatmapButton != null)
             heatmapButton.setOnAction(e -> openWindow("/views/heatmap.fxml", "Spending Heatmap"));
-
         if (summaryButton != null)
             summaryButton.setOnAction(e -> openWindow("/views/summary.fxml", "Monthly Summary"));
-
         if (gamifyButton != null)
             gamifyButton.setOnAction(e -> openWindow("/views/gamification.fxml", "Gamification & Tips"));
-
         if (chartsButton != null)
             chartsButton.setOnAction(e -> openWindow("/views/chart_view.fxml", "Expense Charts"));
-
         if (tipsButton != null)
             tipsButton.setOnAction(e -> openWindow("/views/budget_tips.fxml", "Budgeting Tips"));
     }
@@ -103,7 +91,7 @@ public class DashboardController {
 
     private void exportDataToCSV() {
         List<String[]> rows = transactionTable.getItems().stream()
-                .map(txn -> new String[]{
+                .map(txn -> new String[] {
                         txn.getDate(),
                         txn.getCategory(),
                         txn.getDescription(),
@@ -135,6 +123,7 @@ public class DashboardController {
         incomeDialog.setHeaderText("Enter your monthly income:");
         incomeDialog.setTitle("Monthly Income");
         incomeDialog.setContentText("Income:");
+
         Optional<String> incomeInput = incomeDialog.showAndWait();
         incomeInput.ifPresent(input -> {
             try {
@@ -149,10 +138,12 @@ public class DashboardController {
         budgetDialog.setHeaderText("Enter your monthly budget:");
         budgetDialog.setTitle("Monthly Budget");
         budgetDialog.setContentText("Budget:");
+
         Optional<String> budgetInput = budgetDialog.showAndWait();
         budgetInput.ifPresent(input -> {
             try {
                 monthlyBudget = Double.parseDouble(input);
+                DashboardController.globalMonthlyBudget = monthlyBudget;
             } catch (NumberFormatException e) {
                 showAlert("⚠️ Invalid input. Monthly budget set to 0.");
                 monthlyBudget = 0;

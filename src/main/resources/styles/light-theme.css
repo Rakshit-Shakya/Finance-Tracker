@@ -93,3 +93,15 @@
     -fx-background-color: #007acc;
     -fx-text-fill: #ffffff;
 }
+
+
+.day-box {
+    -fx-background-color: white;
+    -fx-border-color: lightgray;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-alignment: center;
+    -fx-font-size: 13px;
+}

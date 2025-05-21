@@ -9,7 +9,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 import utils.DatabaseUtil;
 
-public class MainApp extends Application {  // ✅ Make sure this extends Application
+public class MainApp extends Application {  
     private boolean isDarkMode = true;
 
     @Override

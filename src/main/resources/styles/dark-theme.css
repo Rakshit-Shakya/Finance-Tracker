@@ -152,3 +152,10 @@
     -fx-background-color: #4a90e2;
     -fx-text-fill: #ffffff;
 }
+
+.day-box {
+    -fx-background-color: #2e2e2e;
+    -fx-border-color: #555;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
